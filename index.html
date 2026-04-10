@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+
+<body>
+
+    <div class="control-buttons">
+        <span>Start Game</span>
+    </div>
+    <div class="info-container flex items-center justify-between w-[80%] m-[20px_auto_0] p-[20px] text-[20px] gap-[5%] font-medium rounded-[10px] bg-[#f6f6f6]">
+        <div class="name">
+            hello: <span></span>
+        </div>
+        <div class="tries">
+            wrong tries: <span>0</span>
+        </div>
+    </div>
+    <div class="memory-game-blocks flex m-[20px_auto] flex-wrap w-[calc(80%-20px)]">
+        <div class="game-block" data-technology="angular">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-angular"></i>
+                <!-- <img src="imgs/angular.png" alt=""> -->
+            </div>
+        </div>
+        <div class="game-block" data-technology="angular">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-angular"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="vuejs">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-vuejs"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="vuejs">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-vuejs"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="css">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-css"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="css">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-css"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="github">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-github"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="github">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-github"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="gulp">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-gulp"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="gulp">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-gulp"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="html5">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-html5"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="html5">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-html5"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="cowboy">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-solid fa-hat-cowboy"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="cowboy">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-solid fa-hat-cowboy"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="robot">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="robot">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="python">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-python"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="python">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-python"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="react">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-react"></i>
+            </div>
+        </div>
+        <div class="game-block" data-technology="react">
+            <div class="face front"></div>
+            <div class="face back">
+                <i class="fa-brands fa-react"></i>
+            </div>
+        </div>
+    </div>
+
+    <audio id="correct" src="assets/correct.mp3" preload="auto"></audio>
+    <audio id="wrong" src="assets/wrong.mp3" preload="auto"></audio>
+    <audio id="click" src="assets/click.mp3" preload="auto"></audio>
+    <audio id="endGame" src="assets/end game.mp3" preload="auto"></audio>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

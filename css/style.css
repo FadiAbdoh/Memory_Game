@@ -1,0 +1,208 @@
+
+
+body {
+}
+
+:root {
+    --transition-dur: .5s;
+}
+
+.control-buttons {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: #000000e0;
+    transform: var(--transition-dur);
+}
+
+.control-buttons > span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #0400ff;
+    padding: 15px 25px;
+    font-size: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: var(--transition-dur);
+    animation: moveBtn 3s infinite;
+}
+
+.control-buttons > span:hover {
+    background: #0400ffcf;
+}
+
+@media (max-width: 767px) {
+    .control-buttons > span {
+        text-align: center;
+    }
+}
+
+@keyframes moveBtn {
+    0%,100% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) rotateY(10deg);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotateY(-10deg);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) rotateY(10deg);
+    }
+}
+
+.info-container {
+    overflow: hidden;
+    text-transform: capitalize;
+    border: 2px solid #2196f3;
+
+}
+
+.name {
+    flex: 1;
+}
+
+@media (max-width: 767px) {
+    .info-container {
+        width: auto;
+        margin-right: 15px;
+        margin-left: 15px;
+        font-size: 1rem;
+        padding: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .name,
+    .tries {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.memory-game-blocks .game-block.is-clicked {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+.memory-game-blocks .game-block.matched {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+.memory-game-blocks .game-block {
+    transition: transform var(--transition-dur);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    position: relative;
+    margin: 0 10px 20px;
+    flex: 1 0 150px;
+    height: 150px;
+}
+
+.memory-game-blocks .game-block .front {
+    background: #333;
+    line-height: 100px;
+}
+
+.memory-game-blocks .game-block .front::before {
+    content: '?';
+    color: white;
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) skewX(0deg);
+    font-weight: bold;
+}
+
+.memory-game-blocks .game-block .front.animation::before {
+    animation: moveIcon 1s;
+}
+
+@keyframes moveIcon {
+    0%,100% {
+        transform: translate(-50%, -50%) skewX(0deg);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) skewX(15deg);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) skewX(-15deg);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) skewX(15deg);
+    }
+}
+
+.memory-game-blocks .game-block .back {
+    background-color: #33bbef;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    transform: rotateY(180deg);
+}
+
+.memory-game-blocks .game-block .back i {
+    font-size: 80px;
+    color: white;
+}
+
+.memory-game-blocks .game-block .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+
+@media (max-width: 991px) {
+    .memory-game-blocks .game-block {
+        flex: 1 0 100px;
+        height: 100px;
+        margin: 0 5px 10px;
+    }
+
+    .memory-game-blocks .game-block .front::before {
+        font-size: 60px;
+    }
+
+    .memory-game-blocks .game-block .back i {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .memory-game-blocks {
+        margin: 20px 15px;
+        width: auto;
+    }
+
+    .memory-game-blocks .game-block {
+        flex: 1 0 90px;
+        height: 90px;
+        margin: 0 5px 10px;
+    }
+
+    .memory-game-blocks .game-block .front::before {
+        font-size: 60px;
+    }
+
+    .memory-game-blocks .game-block .back i {
+        font-size: 60px;
+    }
+}
