@@ -4,147 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Test and sharpen your memory with Memory Blocks Game. Features multiple difficulty levels, countdown timer, sound effects, and sleek 3D card animations.">
+    <meta name="keywords" content="Memory Game, Card Matching Game, JavaScript Game, Web Game, Brain Training, Fadi Abdoh">
+    <meta name="author" content="Fadi Abdoh">
+    <meta name="robots" content="index, follow">
+
+    <meta name="theme-color" content="#090d16">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Memory Blocks Game">
+    <meta property="og:description" content="Challenge your memory across Easy, Medium, and Hard levels before the timer runs out!">
+
+    <meta property="og:url" content="https://fadiabdoh.github.io/Memory_Game/">
+    <meta property="og:image" content="https://fadiabdoh.github.io/Memory_Game/assets/preview.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Memory Blocks Game">
+    <meta name="twitter:description" content="Challenge your memory across Easy, Medium, and Hard levels before the timer runs out!">
+    <meta name="twitter:image" content="https://fadiabdoh.github.io/Memory_Game/assets/preview.png">
+
     <title></title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="src/output.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
 
-    <div class="control-buttons">
-        <span>Start Game</span>
+    <!-- START (start , input modal) -->
+    <div class="control-buttons inset-0 z-50 bg-black/85 backdrop-blur-sm">
+        <div
+            class="bg-gray-900 border border-blue-500/30 p-8 rounded-2xl shadow-2xl text-center max-w-md w-[90%] transform transition-all">
+            <h1 class="text-3xl font-bold text-white mb-2">Memory Game</h1>
+            <p class="text-gray-400 text-sm mb-6">Test your memory</p>
+
+            <div class="mb-6 text-left">
+                <label for="playerName">Enter your name: </label>
+                <input type="text" id="playerName" placeholder="e.g. Fadi">
+                <span class="hint">Enter your name to start the game</span>
+            </div>
+
+            <!-- Select Difficulty -->
+            <div class="difficulty">
+                <label for="difficultySelect">
+                    Select Difficulty:
+                </label>
+                <select id="difficultySelect">
+                    <option value="easy">Easy (6 Pairs - 12 Cards)</option>
+                    <option value="medium" selected>Medium (8 Pairs - 16 Cards)</option>
+                    <option value="hard">Hard (10 Pairs - 20 Cards)</option>
+                </select>
+            </div>
+
+            <button id="StartGameBtn">Start Game</button>
+        </div>
     </div>
-    <div class="info-container flex items-center justify-between w-[80%] m-[20px_auto_0] p-[20px] text-[20px] gap-[5%] font-medium rounded-[10px] bg-[#f6f6f6]">
-        <div class="name">
-            hello: <span></span>
-        </div>
-        <div class="tries">
-            wrong tries: <span>0</span>
+    <!-- END (start , input modal) -->
+
+    <!-- START (Victory Modal) -->
+    <div id="victoryModal" class="victory-modal">
+        <div>
+            <h1 class="">Congratulations!</h1>
+            <p class="">You have matched all pairs!</p>
+
+            <div class="winner-info">
+                <div>
+                    <span>Player:</span>
+                    <span id="finalPlayerName"></span>
+                </div>
+                <div>
+                    <span>Difficulty:</span>
+                    <span id="finalDifficulty"></span>
+                </div>
+                <div>
+                    <span>Time Taken:</span>
+                    <span id="finalTimeTaken">0s</span>
+                </div>
+                <div>
+                    <span>Wrong Tries:</span>
+                    <span id="finalWrongTries">0</span>
+                </div>
+            </div>
+
+            <button id="playAgainBtn">
+                Play Again
+            </button>
         </div>
     </div>
-    <div class="memory-game-blocks flex m-[20px_auto] flex-wrap w-[calc(80%-20px)]">
-        <div class="game-block" data-technology="angular">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-angular"></i>
-                <!-- <img src="imgs/angular.png" alt=""> -->
+    <!-- END (Victory Modal) -->
+
+    <div class="container">
+        <!-- START (info-container) -->
+        <div class="info-container">
+            <div class="row one">
+                <div class="name">
+                    Hello: <span></span>
+                </div>
+                <div class="currentLevelDisplay">
+                    level: <span>medium</span>
+                </div>
+            </div>
+            
+            <div class="row two">
+                <div class="timer">
+                    Time Left: <span>00:00</span>
+                </div>
+                <div class="tries">
+                    Wrong tries: <span>0</span>
+                </div>
             </div>
         </div>
-        <div class="game-block" data-technology="angular">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-angular"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="vuejs">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-vuejs"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="vuejs">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-vuejs"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="css">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-css"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="css">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-css"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="github">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-github"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="github">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-github"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="gulp">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-gulp"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="gulp">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-gulp"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="html5">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-html5"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="html5">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-html5"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="cowboy">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-solid fa-hat-cowboy"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="cowboy">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-solid fa-hat-cowboy"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="robot">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-solid fa-robot"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="robot">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-solid fa-robot"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="python">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-python"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="python">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-python"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="react">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-react"></i>
-            </div>
-        </div>
-        <div class="game-block" data-technology="react">
-            <div class="face front"></div>
-            <div class="face back">
-                <i class="fa-brands fa-react"></i>
-            </div>
-        </div>
+        <!-- END (info-container) -->
+
+        <!-- START (memory-game-blocks) -->
+        <div class="memory-game-blocks "></div>
+        <!-- END (memory-game-blocks) -->
     </div>
 
     <audio id="correct" src="assets/correct.mp3" preload="auto"></audio>
